@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block content %}
+<style>
+      .search-container{
+    background: linear-gradient(to right, rgb(214,194,236),rgb(168, 157, 180) );
+    box-shadow: 5px 3px 20px gray;
+    border-radius: 15px !important;
+   
+    }
+    .display-5, .col-md-8{
+        color: rgb(117,92,187) !important;
+        font-family: cursive;
+
+    }
+    .list-of-jobs{
+    background: linear-gradient(60deg, rgb(214,194,236),rgb(168, 157, 180) );
+        box-shadow: 3px 3px  0 gray;  
+     }
+     .card-title{
+    font-weight: 700;
+  }
+  .form-fields,
+       label{
+        font-family: cursive;
+        color: rgb(71, 6, 97);
+        
+       }
+       .btn{
+        background-color: rgb(253, 175, 74);
+        box-shadow: 3px 3px 10px gray;
+        font-weight: 500;
+        font-family: cursive;
+    }
+    .card-footer{
+        box-shadow: 3px 3px  5px gray;  
+        background-color: aliceblue;
+       }
+       .text-muted{
+        font-weight: 500 !important;
+       }
+</style>
+<section>
+    <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+
+            <h2 class="display-5 fw-bold">{{job.title}}</h2>
+            <p class="card-text">Experience: {{job.min_experience}}-{{job.max_experience}}</p>
+            <p class="col-md-8  fs-5 mt-3">
+                {{job.state}} | {{job.salary|intcomma}}
+            </p>
+            {% if has_applied == False %}
+            <a href="{% url 'apply-to-job' job.pk %}" class="btn " >Apply Now</a>
+            {% else %}
+            <p><span class="text-danger">You have already applied</span></p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<div>
+    <section>
+        <h5>Job Description</h5>
+        <p>{{job.requirements}}</p>
+    </section>
+</div>
+<div>
+    <section>
+        <h5>Ideal Candidate</h5>
+        <p>{{job.ideal_candidate}}</p>
+    </section>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <div class="col">
+
+        <div class="card h-100 list-of-jobs">
+
+            <div class="card-body">
+
+                <h5 class="card-title">Skills</h5>
+
+                <p class="card-text">{{job.skills}}</p>
+            </div>
+            <div class="card-footer">
+
+                <small class="text-muted"> Last updated 3 mins ago </small>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <div class="col">
+
+        <div class="card h-100 list-of-jobs">
+
+            <div class="card-body">
+
+                <h5 class="card-title">About the company</h5>
+                <p class="card-text"><span class="form-fields">Company :</span>{{job.company.name}}</p>
+                <p class="card-text"><span class="form-fields">Location : </span>{{job.company.city}}, {{job.comapny.state}}</p>
+                <p class="card-text"><span class="form-fields">Established on:</span> {{job.company.established_date}}</p>
+            </div>
+            <div class="card-footer">
+
+                <small class="text-muted"> Last updated 3 mins ago </small>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+    <div class="col">
+
+        <div class="card h-100 list-of-jobs">
+
+            <div class="card-body">
+
+                <h5 class="card-title">Job Type</h5>
+
+                <p class="card-text">{{job.job_type}}</p>
+            </div>
+            <div class="card-footer">
+
+                <small class="text-muted"> Last updated 3 mins ago </small>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+{% endblock content %}

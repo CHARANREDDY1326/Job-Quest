@@ -1,0 +1,39 @@
+version: '3'
+
+# networks: 
+#     host:
+#         external : true
+services:
+  # db:
+  #   image: mysql:latest
+  #   restart: always
+  #   environment:
+  #     MYSQL_DATABASE: 'job_quest' #your_db_name
+  #     # MYSQL_USER: 'admin' #your_username
+  #     # MYSQL_ROOT_PASSWORD: 'password' #your_password
+  #     MYSQL_ROOT_PASSWORD: 'password' #your_root_password
+  #   ports:
+  #     - '3306:3306' #default port for MySQL
+  #   volumes:
+  #     - mysql_data:/var/lib/mysql
+  
+  web:
+    build: .
+    command:
+      sh -c "python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+      # - "3306:3306"
+    environment:
+       MYSQL_DATABASE : 'job_quest'
+       MYSQL_USER : 'charan'
+       MYSQL_PASSWORD : 'password'
+       MYSQL_HOST : '192.168.29.239'
+    # network_mode : host
+    extra_hosts :
+      - "DarkLord:192.168.65.254"
+
+volumes:
+  mysql_data:

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<style>
+    .custom-style {
+        text-align: center;
+        color: rgb(117,92,187);
+    }
+
+    .graph-container {
+        width: 400px;
+        height: 400px;
+        border: 2px solid #333;
+        position: relative;
+        margin: 20px auto;
+        background: linear-gradient(to bottom, #f0f0f0, #ccc);
+    }
+
+    .graph-bar {
+        position: absolute;
+        bottom: 0;
+        background-color: rgb(117,92,187);
+    }
+
+    .bar1 {
+        height: 60%;
+        width: 40px;
+        left: 20%;
+    }
+
+    .bar2 {
+        height: 80%;
+        width: 40px;
+        left: 40%;
+    }
+
+    .bar3 {
+        height: 50%;
+        width: 40px;
+        left: 60%;
+    }
+
+    .graph-link {
+        
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-indent: -9999px; 
+    }
+
+</style>
+
+{% if not is_applicant %}
+        <!-- <h1 class="custom-style">Recruiter Analytics</h1> -->
+        <h1 class="custom-style">Discover insights by clicking on the graph below</h1>
+        <div class="graph-container">
+        <div class="graph-bar bar1"></div>
+        <div class="graph-bar bar2"></div>
+        <div class="graph-bar bar3"></div>
+
+            <a class="graph-link" href="https://app.powerbi.com/reportEmbed?reportId=ad857378-62a5-49ce-b1f4-29a720f60a05&autoAuth=true&ctid=1bf94703-0855-44e5-b70d-204fe27d9287">Click here</a>
+        <!-- More recruiter-specific content -->
+        </div>
+
+{% else %}
+        <!-- <h1>Applicant Analytics</h1> -->
+        <h1 class="custom-style">Discover insights by clicking on the graph below</h1>
+        <div class="graph-container">
+        <div class="graph-bar bar1"></div>
+        <div class="graph-bar bar2"></div>
+        <div class="graph-bar bar3"></div>
+        
+        <a class="graph-link" href="https://app.powerbi.com/reportEmbed?reportId=2f334f4d-9ef8-4bae-ab2a-dfe9fba8b2f4&autoAuth=true&ctid=1bf94703-0855-44e5-b70d-204fe27d9287">click here</a>
+        </div>
+        <!-- More non-recruiter-specific content -->
+{% endif %}
+    
+    <!-- src="https://app.powerbi.com/reportEmbed?reportId=3d869054-018f-4003-850e-ba56519cd1e9&autoAuth=true&embeddedDemo=true" -->
+{% endblock content %}

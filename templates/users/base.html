@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>JobQuest</title>
+</head>
+<style>
+    body {
+      background: linear-gradient(45deg, rgb(214,199,255), rgb(236, 235, 240) );
+     position: relative;
+    }
+    .bubble-2 {
+            position: absolute;
+            background-color: rgb(238, 14, 126, 0.7); /* Pink color with transparency */
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+           
+        }
+        .bubble-3 {
+            position: absolute;
+            background-color: rgb(238, 14, 126, 0.9); /* Pink color with transparency */
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+           overflow: hidden;
+        }
+        .left-to-right {
+            animation: bubbleAnimationLeftToRight 6s ease-in-out infinite;
+        }
+
+       .right-to-left {
+            animation: bubbleAnimationRightToLeft 18s ease-in-out infinite;
+        }
+        .left-to-right-up,
+       .left-to-right-down {
+            animation: bubbleAnimationLeftToRightUp 14s ease-in-out infinite;
+            
+        }
+
+        .right-to-left-up,
+       .right-to-left-down {
+            animation: bubbleAnimationRightToLeftUp 10s ease-in-out infinite;
+            
+        }
+        @keyframes bubbleAnimationLeftToRight {
+            0% {
+                transform: translate(-100vw, 50vh) scale(3);
+                opacity: 1;
+            }
+           
+
+            100% {
+                transform: translate(100vw, -50vh) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bubbleAnimationRightToLeft {
+            0% {
+                transform: translate(100vw, 50vh) scale(2);
+                opacity: 1;
+            }
+            
+            100% {
+                transform: translate(-100vw, -50vh) scale(3);
+                opacity: 0;
+            }
+        }
+        @keyframes bubbleAnimationLeftToRightUp {
+            0% {
+                transform: translate(-100vw, 100vh) scale(1);
+                opacity: 1;
+            }
+           
+
+            100% {
+                transform: translate(100vw, -100vh) scale(3);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bubbleAnimationRightToLeftUp {
+            0% {
+                transform: translate(100vw, 100vh) scale(2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translate(-100vw, -100vh) scale(3);
+                opacity: 0;
+            }
+        }
+        .tag{
+            align-items: center;
+            text-align: center;
+        }
+   
+</style>
+<body>
+
+    <div class="container col-xl-10 col-xxl-8 px-4 py-5">
+        <div class="row align-items-center g-lg-5 py-5">
+            <div class="col-lg-7 text-center text-lg-start">
+                <h1 class="display-4  fw-vold lh-1 mb-3"> Welcome to JobQuest!</h1>
+                <p class="col-lg-10 fs-4 tag">
+                    Find the job you need.
+                </p>
+            </div>
+            <div class="col-md-10 mx-auto col-lg-5">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" role="alert">
+                    <b>{{message}}</b>
+                </div>
+                {% endfor %}
+                {% endif %}
+                {% block content%}
+                {% endblock content %}
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="bubble-2 left-to-right" style="top: 70px; left: 10%;"></div>
+  <div class="bubble-3 left-to-right" style="top: 70px; left: 30%;"></div>
+  <!-- <div class="bubble right-to-left" style="top: 80px; right: 0;"></div> -->
+  <div class="bubble-2 right-to-left" style="top: 80px; right: 10%;"></div>
+  <div class="bubble-3 right-to-left" style="top: 80px; right: 30%;"></div>
+  <!-- <div class="bubble right-to-left-up" style="bottom: 780px; right: 0;"></div> -->
+  <div class="bubble-2 right-to-left-up" style="bottom: 780px; right: 10%;"></div>
+  <div class="bubble-3 right-to-left-up" style="bottom: 780px; right: 30%;"></div>
+  <!-- <div class="bubble left-to-right-up" style="bottom: 770px; left: 0;"></div> -->
+  <div class="bubble-2 left-to-right-up" style="bottom: 770px; left: 10%;"></div>
+  <div class="bubble-3 left-to-right-up" style="bottom: 770px; left: 30%;"></div>
+  <!-- <div class="bubble right-to-left-down" style="bottom: 180px; right: 0;"></div> -->
+  <div class="bubble-2 right-to-left-down" style="bottom: 180px; right: 10%;"></div>
+  <div class="bubble-3 right-to-left-down" style="bottom: 180px; right: 30%;"></div>
+  <!-- <div class="bubble left-to-right-down" style="bottom: 170px; left: 0;"></div> -->
+  <div class="bubble-2 left-to-right-down" style="bottom: 170px; left: 10%;"></div>
+  <div class="bubble-3 left-to-right-down" style="bottom: 170px; left: 30%;"></div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+</body>
+</html>

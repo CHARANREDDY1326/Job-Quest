@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .search-container{
+    background: linear-gradient(to right, rgb(214,194,236),rgb(168, 157, 180) );
+    box-shadow: 5px 3px 20px gray;
+    border-radius: 15px !important;
+   
+    }
+    .col-md-8{
+        color: rgb(117,92,187) !important;
+        font-family: cursive;
+
+    }
+    .title-p{
+        align-items: center;
+        text-align: center;
+       }
+       .title-r{
+        align-items: right;
+        text-align: right;
+        padding-right: 35px;
+       }
+    </style>
+{% if request.user.is_applicant %}
+
+{%  if not request.user.has_resume %}
+<div class="alert alert-danger" role="alert">
+    <b>You are seeing this because you have not yet created any resume,<a href="{% url 'update-resume' %}">Click here to create one</a> </b>
+</div>
+{% endif %}
+<section>
+    <div class="p-5 mb-4 search-container rounded-3">
+        <div class="container-fluid py-5" >
+            <h2 class="display-5 fw-bold title-p">Welcome to JobQuest!</h2> <br>
+            
+            <p class="col-md-8 fs-4 title-r">Applicant dashboard</p>
+            
+
+    </div>
+</section>
+
+{% elif request.user.is_recruiter %}
+
+{%  if not request.user.has_company %}
+<div class="alert alert-danger" role="alert">
+    <b>You are seeing this because you have not yet created a company,<a href="{% url 'update-company' %}">Create</a> a company to start </b>
+</div>
+{% endif %}
+<section>
+    <div class="p-5 mb-4 search-container rounded-3">
+        <div class="container-fluid py-5">
+            <h2 class="display-5 fw-bold title-p">Welcome to JobQuest!</h2> <br>
+            <p class="col-md-8 fs-4 title-r">Recruiter dashboard</p>
+           
+
+    </div>
+</section>
+{% else %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Alert!</strong> Invalid request.
+    <a href="{% url 'home' %}" class="btn btn-primary btn">Go to Home Page</a>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endif %}
+
+{% endblock content %}

@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+
+
+{% block content %}
+<style>
+    .form-fields,
+      label{
+       font-family: cursive;
+       color: rgb(71, 6, 97);
+       
+      }
+      .card-title{
+   font-weight: 700;
+ }
+ .row{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ }
+ .btn{
+       background-color: rgb(253, 175, 74);
+       box-shadow: 3px 3px 10px gray;
+       font-weight: 500;
+       font-family: cursive;
+   }
+   </style>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card mx-auto" style="width: 40rem;">
+            <div class="card-body">
+                <h5 class="card-title mb-3"> Create you Resume</h5>
+
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="mb-3"> 
+                        <label for="exampleInputEmaila" class="form-label">First Name</label>
+                        {% render_field form.first_name class="form-control" %}
+                    
+                    </div>
+                    <div class="mb-3"> 
+                        <label for="exampleInputEmaila" class="form-label">Last Name</label>
+                        {% render_field form.last_name class="form-control" %}
+                        
+                    </div>
+                    <div class="mb-3"> 
+                        <label for="exampleInputEmaila" class="form-label">Location</label>
+                        {% render_field form.location class="form-control" %}
+                        
+                    </div>
+                    <div class="mb-3"> 
+                        <label for="exampleInputEmaila" class="form-label">Experience</label>
+                        {% render_field form.experience class="form-control" %}
+                        
+                    </div>
+                    <div class="mb-3"> 
+                        <label for="exampleInputEmaila" class="form-label">Skills</label>
+                        {% render_field form.skills class="form-control" %}
+                        
+                    </div>
+                    <div class="mb-3"> 
+                        <label for="exampleInputEmaila" class="form-label">Job Title</label>
+                        {% render_field form.job_title class="form-control" %}
+                        
+                    </div>
+                    <div class="mb-3"> 
+                        <label for="exampleInputEmaila" class="form-label">Upload Resume</label>
+                        {% render_field form.upload_resume class="form-control" %}
+                        
+                    </div>
+                    
+
+                    <button type="submit" class="btn "> Submit</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+ 
+
+
+
+
+{% endblock content%}
